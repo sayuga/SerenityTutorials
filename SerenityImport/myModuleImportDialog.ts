@@ -1,8 +1,8 @@
 
-namespace MatrixOne.Default {
+namespace myProject.Default {
 
     @Serenity.Decorators.registerClass()
-    export class ExcelImportDialog extends Serenity.PropertyDialog<any, any> {
+    export class myModuleExcelImportDialog extends Serenity.PropertyDialog<any, any> {
 
         private form: ExcelImportForm;
 
