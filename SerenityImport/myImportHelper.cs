@@ -45,25 +45,31 @@ namespace myProject.myImportHelper
             headerMap.Clear();
             for (int b = 0; b < expectedHeaders.Count; b++)
             {
-                for (int a = 0; a < importedHeaders.Count; a++)
+               for (int a = 0; a < importedHeaders.Count; a++)
                 {
                     if (importedHeaders[a] == expectedHeaders[b])
                     {
                         x = a;
+                        emessage = null;
                         break;
                     }
                     else
                     {
                         for (int c = 0; c < exceptionHeaders.Count; c++)
                         {
-                            if (expectedHeaders[b] != exceptionHeaders[c])
+                            emessage = "Column " + expectedHeaders[b] + " appears to be missing from the file";
+                            if (exceptionHeaders[c] == expectedHeaders[b] )
                             {
-                                emessage = "Column " + expectedHeaders[b] + " appears to be missing from the file";
-                                myErrors.Add(emessage);
-                            }
-                        }
-                        x = -1;
+                                emessage = null;
+                                break;
+                            }                                               
+                        }                        
+                        x = -1;                        
                     }
+                }
+
+                if (emessage != null) {
+                    myErrors.Add(emessage);
                 }
                 headerMap.Add(expectedHeaders[b], x);
             }
@@ -78,8 +84,13 @@ namespace myProject.myImportHelper
         /// <param name="worksheet">Worksheet being accessed</param>
         /// <returns>Excel Value at Cell Address</returns>
         public static object myExcelVal(int row, int col, ExcelWorksheet worksheet) {
-                      
-            var myOut = worksheet.Cells[row, col + 1].Value;
+            object myOut;
+            if (col >= 0)
+            {
+                myOut = worksheet.Cells[row, col + 1].Value;
+            }
+            else
+                myOut = null;
             return myOut;
         }      
     }
