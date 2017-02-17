@@ -18,9 +18,9 @@ namespace myProject.Default.Entities
     using jImpHelp = myImportJointFields.ExcelImportHelper;
 
 
-    [RoutePrefix("Services/Default/CustomerExcelImport"), Route("{action}")]
+    [RoutePrefix("Services/Default/myModuleExcelImport"), Route("{action}")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize]
-    public class CustomerExcelImportController : ServiceEndpoint
+    public class myModuleExcelImportController : ServiceEndpoint
     {
         [HttpPost]
         public ExcelImportResponse ExcelImport(IUnitOfWork uow, ExcelImportRequest request)
