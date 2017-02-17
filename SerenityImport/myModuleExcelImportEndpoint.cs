@@ -122,32 +122,37 @@ namespace myProject.Default.Entities
                     ----ADD OBJECT TO NEW CONTAINER--
                     var newContainer = obj;
                     ----------------------
-                    importedValues.Add(obj);
-                    sysHeader.Add(fieldTitle);
-                    a = jImpHelp.myImportEntry(importedValues, myErrors, sysHeader, row, entType, myConnection);
-                    if (a != null)
+                   if (obj != null)
                     {
-                        currentRow.CustomerAddress = a; //designate the field to be updated in the system
+                        importedValues.Add(obj);
+                        sysHeader.Add(fieldTitle);
+                        a = jImpHelp.myImportEntry(importedValues, myErrors, sysHeader, row, entType, myConnection);
+                        if (a != null)
+                        {
+                            currentRow.CustomerAddress = a; //designate the field to be updated in the system
+                        }
+                        sysHeader.Clear();
+                        importedValues.Clear();
                     }
-                    sysHeader.Clear();
-                    importedValues.Clear();
                     -----Joint Field
                     entType = jImpHelp.entryType.jointField; //<--Update Me according to type of field to merge with
                     fieldTitle = myFields.secondFieldCustomerName.Title;//<--Update Me
                     obj = myImpHelp.myExcelVal(row, myImpHelpExt.GetEntry(headerMap, fieldTitle).Value, worksheet);
-                    importedValues.Add(obj);
-                    
-                    -----ADD CAPTURED CONTAINER TO VALUES LIST-----
-                    importedValue.Add(newContainer)
-                    -------------------------------------------
-                    sysHeader.Add(fieldTitle);
-                    a = jImpHelp.myImportEntry(importedValues, myErrors, sysHeader, row, entType, myConnection);
-                    if (a != null)
-                    {
-                        currentRow.jointFieldID = a; //<--Update Me
+                    if (obj != null)
+                    {                    
+                        importedValues.Add(obj);
+                        -----ADD CAPTURED CONTAINER TO VALUES LIST-----                        
+                        importedValue.Add(newContainer)
+                        -------------------------------------------                                      
+                        sysHeader.Add(fieldTitle);
+                        a = jImpHelp.myImportEntry(importedValues, myErrors, sysHeader, row, entType, myConnection);
+                        if (a != null)
+                        {
+                            currentRow.AddressLogId = a; ////<--Update Me. *Special Case. Notice: Not the same as field to match
+                        }
+                        sysHeader.Clear();
+                        importedValues.Clear();
                     }
-                    sysHeader.Clear();
-                    importedValues.Clear();
                     */
 
                     //--------------------------Merge Imported Fields ------------------------------------------------------------//
@@ -155,42 +160,51 @@ namespace myProject.Default.Entities
                     entType = jImpHelp.entryType.String; //designate the type of item
                     fieldTitle = myFields.CustomerAddress.Title; //designate the field to be looked at
                     obj = myImpHelp.myExcelVal(row, myImpHelpExt.GetEntry(headerMap, fieldTitle).Value, worksheet);
-                    importedValues.Add(obj);
-                    sysHeader.Add(fieldTitle);
-                    a = jImpHelp.myImportEntry(importedValues, myErrors, sysHeader, row, entType, myConnection);
-                    if (a != null)
+                    if (obj != null)
                     {
-                        currentRow.CustomerAddress = a; //designate the field to be updated in the system
+                        importedValues.Add(obj);
+                        sysHeader.Add(fieldTitle);
+                        a = jImpHelp.myImportEntry(importedValues, myErrors, sysHeader, row, entType, myConnection);
+                        if (a != null)
+                        {
+                            currentRow.CustomerAddress = a; //designate the field to be updated in the system
+                        }
+                        sysHeader.Clear();
+                        importedValues.Clear();
                     }
-                    sysHeader.Clear();
-                    importedValues.Clear();
 
                     /*Same as above, just updated for the next field. */
                     entType = jImpHelp.entryType.String; //<--Update Me according to type of field to merge with
                     fieldTitle = myFields.CustomerName.Title;//<--Update Me
                     obj = myImpHelp.myExcelVal(row, myImpHelpExt.GetEntry(headerMap, fieldTitle).Value, worksheet);
-                    importedValues.Add(obj);
-                    sysHeader.Add(fieldTitle);
-                    a = jImpHelp.myImportEntry(importedValues, myErrors, sysHeader, row, entType, myConnection);
-                    if (a != null)
+                    if (obj != null)
                     {
-                        currentRow.CustomerName = a; //<--Update Me
+                        importedValues.Add(obj);
+                        sysHeader.Add(fieldTitle);
+                        a = jImpHelp.myImportEntry(importedValues, myErrors, sysHeader, row, entType, myConnection);
+                        if (a != null)
+                        {
+                            currentRow.CustomerName = a; //<--Update Me
+                        }
+                        sysHeader.Clear();
+                        importedValues.Clear();
                     }
-                    sysHeader.Clear();
-                    importedValues.Clear();
 
                     entType = jImpHelp.entryType.CategoryJoin; //<--Update Me *Special Case Joint Field
                     fieldTitle = myFields.AddressFloor.Title; //<--Update Me *Special Case. Notice: Field to match in import file
                     obj = myImpHelp.myExcelVal(row, myImpHelpExt.GetEntry(headerMap, fieldTitle).Value, worksheet);                    
-                    importedValues.Add(obj);
-                    sysHeader.Add(fieldTitle);
-                    a = jImpHelp.myImportEntry(importedValues, myErrors, sysHeader, row, entType, myConnection);                    
-                    if (a != null)
+                    if (obj != null)
                     {
-                        currentRow.AddressLogId = a; ////<--Update Me. *Special Case. Notice: Not the same as field to match
+                        importedValues.Add(obj);
+                        sysHeader.Add(fieldTitle);
+                        a = jImpHelp.myImportEntry(importedValues, myErrors, sysHeader, row, entType, myConnection);
+                        if (a != null)
+                        {
+                            currentRow.AddressLogId = a; ////<--Update Me. *Special Case. Notice: Not the same as field to match
+                        }
+                        sysHeader.Clear();
+                        importedValues.Clear();
                     }
-                    sysHeader.Clear();
-                    importedValues.Clear();
                     //----------------------------------------Run Object Entries with Create or Update ------------------------------------//
                     if (currentRow.CustomerId == null)
                     {
