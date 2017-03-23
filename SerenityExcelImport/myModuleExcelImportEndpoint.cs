@@ -15,7 +15,7 @@ namespace myProject.Default.Entities
     using System.Linq;
     using myImpHelp = myImportHelper.ExcelImportHelper;
     using myImpHelpExt = myImportHelper.myExtension;
-    using jImpHelp = myImportJointFields.ExcelImportHelper;
+    using jImpHelp = myImportFields.ExcelImportHelper;
 
 
     [RoutePrefix("Services/Default/myModuleExcelImport"), Route("{action}")]
