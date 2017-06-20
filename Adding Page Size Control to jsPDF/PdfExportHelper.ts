@@ -1,6 +1,6 @@
 declare var jsPDF;
 
-namespace FMCMatrix.Common {
+namespace myProject.Common {
     export interface PdfExportOptions {
         grid: Serenity.DataGrid<any, any>;
         onViewSubmit: () => boolean;
