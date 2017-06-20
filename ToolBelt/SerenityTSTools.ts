@@ -25,7 +25,7 @@ module myTSTools {
          * @param triggerField form field used as trigger for behavior. Type LookupEditor
          * @param tag category group name to be targeted for behaviour. Type string
          */
-        protected categoryToggler(triggerField: any, tag: string) {
+      export function categoryToggler(triggerField: any, tag: string) {
             //  gets the parent element of the category field tha will exhibit behavior
             var ele = this.element.find(".category-title:contains('" + tag + "')").parent(); 
 
