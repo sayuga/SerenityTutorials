@@ -23,11 +23,11 @@ module myTSTools {
          * categoryToggler will hide the targeted category group until the trigger field is given
          * a value. If the trigger field is empty, then the category will reset to being hidden.
          * @param triggerField form field used as trigger for behavior. Type LookupEditor
-         * @param tag category group name to be targeted for behaviour. Type string
+         * @param categoryName category group name to be targeted for behaviour. Type string
          */
-      export function categoryToggler(triggerField: any, tag: string) {
+      export function categoryToggler(triggerField: any, categoryName: string) {
             //  gets the parent element of the category field tha will exhibit behavior
-            var ele = this.element.find(".category-title:contains('" + tag + "')").parent(); 
+            var ele = this.element.find(".category-title:contains('" + categoryName + "')").parent(); 
 
             //gets the value of the triggered field so that it can be checked
             var checkTrigger = triggerField.value;
