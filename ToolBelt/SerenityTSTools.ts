@@ -11,9 +11,11 @@ module myTSTools {
         var container = [];
 
         container.push({ name: "", title: "all" });
-
-        for (var x in fields) {
-            container.push({ name: fields[x], title: txt(fields[x]) });
+        
+        if (fields.length>0){
+            for (var x in fields) {
+                container.push({ name: fields[x], title: txt(fields[x]) });
+            }
         }
 
         return container;
